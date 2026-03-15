@@ -1,0 +1,142 @@
+{
+  "tool": "MediHunt",
+  "version": "0.1.0",
+  "timestamp": "2024-11-01T14:23:11",
+  "summary": {
+    "CRITICAL": 4,
+    "HIGH": 3,
+    "MEDIUM": 2,
+    "LOW": 0,
+    "INFO": 0
+  },
+  "devices": [
+    {
+      "ip": "192.168.10.42",
+      "mac": "00:1A:2B:3C:4D:5E",
+      "device_type": "DICOM AE (PACS/Modality)",
+      "confidence": "High",
+      "open_ports": [104, 11112],
+      "protocols_seen": ["TCP", "DICOM"],
+      "notes": "OS hint: Linux/Android (likely IoT/embedded); TTL=64"
+    },
+    {
+      "ip": "192.168.10.55",
+      "mac": "00:1A:2B:3C:4D:6F",
+      "device_type": "HL7 Integration Engine",
+      "confidence": "High",
+      "open_ports": [2575],
+      "protocols_seen": ["TCP", "HL7"],
+      "notes": "OS hint: Linux/Android (likely IoT/embedded); TTL=64"
+    },
+    {
+      "ip": "192.168.10.80",
+      "mac": "00:1A:2B:3C:4D:7A",
+      "device_type": "FHIR / Clinical API Server",
+      "confidence": "Medium",
+      "open_ports": [8080, 8443],
+      "protocols_seen": ["TCP", "HTTP/S"],
+      "notes": "OS hint: Windows (clinical workstation); TTL=128"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "CRITICAL",
+      "category": "PHI Leakage",
+      "title": "DICOM C-FIND: patient record query in cleartext",
+      "description": "A DICOM C-FIND query was detected. This allows querying patient studies, names, IDs, dates, and diagnoses from a PACS/worklist server. PHI is directly exposed in query responses.",
+      "evidence": "C-FIND-RQ from 192.168.10.22 to 192.168.10.42:104",
+      "src_ip": "192.168.10.22",
+      "dst_ip": "192.168.10.42",
+      "port": 104,
+      "recommendation": "Immediately restrict C-FIND access to authorized clinical systems only. Enable TLS. Log and alert on all C-FIND queries."
+    },
+    {
+      "severity": "CRITICAL",
+      "category": "Protocol",
+      "title": "Unencrypted HL7 MLLP traffic detected",
+      "description": "HL7 v2 messages detected over MLLP (port 2575) without TLS. 3 message(s) captured. MLLP has no built-in security — patient records are fully visible on the network.",
+      "evidence": "192.168.10.33 -> 192.168.10.55:2575 | 3 HL7 messages",
+      "src_ip": "192.168.10.33",
+      "dst_ip": "192.168.10.55",
+      "port": 2575,
+      "recommendation": "Wrap all MLLP connections in TLS (port 2576). Implement IP allowlisting between HL7 endpoints. Use an integration engine with audit logging."
+    },
+    {
+      "severity": "CRITICAL",
+      "category": "PHI Leakage",
+      "title": "HL7 ADT message exposes patient data",
+      "description": "An HL7 ADT (Patient admission/discharge/transfer) message was captured in cleartext. This message type directly contains patient PHI.",
+      "evidence": "MSH|^~\\&|SENDING|FACILITY|...|ADT^A01|MSG001|P|2.5|",
+      "src_ip": "192.168.10.33",
+      "dst_ip": "192.168.10.55",
+      "port": 2575,
+      "recommendation": "Encrypt all HL7 transport. Review data minimization — send only required fields."
+    },
+    {
+      "severity": "CRITICAL",
+      "category": "Credential Exposure",
+      "title": "FHIR Bearer token transmitted in cleartext",
+      "description": "An Authorization: Bearer token was observed in an unencrypted HTTP request to a FHIR endpoint. This token can be replayed to access patient data.",
+      "evidence": "192.168.10.90 -> 192.168.10.80:8080 [Bearer token visible]",
+      "src_ip": "192.168.10.90",
+      "dst_ip": "192.168.10.80",
+      "port": 8080,
+      "recommendation": "Enforce HTTPS immediately. Rotate all exposed tokens. Implement token binding where possible."
+    },
+    {
+      "severity": "HIGH",
+      "category": "Protocol",
+      "title": "Unencrypted DICOM traffic detected",
+      "description": "DICOM traffic observed on port 104 without TLS. Medical images and patient metadata may be transmitted in cleartext.",
+      "evidence": "192.168.10.22:55001 -> 192.168.10.42:104 | 48 packets",
+      "src_ip": "192.168.10.22",
+      "dst_ip": "192.168.10.42",
+      "port": 104,
+      "recommendation": "Enable DICOM TLS (port 2762) as per DICOM PS 3.15 Annex B. Restrict DICOM ports to known AE titles only."
+    },
+    {
+      "severity": "HIGH",
+      "category": "PHI Leakage",
+      "title": "DICOM C-STORE: medical image transfer in cleartext",
+      "description": "A DICOM C-STORE command was detected, indicating medical images are being transferred. Images contain embedded patient metadata (DICOM tags: PatientName, PatientID, DOB, StudyDescription).",
+      "evidence": "C-STORE-RQ from 192.168.10.22 to 192.168.10.42:104",
+      "src_ip": "192.168.10.22",
+      "dst_ip": "192.168.10.42",
+      "port": 104,
+      "recommendation": "Enforce TLS for all DICOM C-STORE operations. Audit which systems are storing images and where."
+    },
+    {
+      "severity": "HIGH",
+      "category": "PHI Leakage",
+      "title": "FHIR Patient resource accessed over HTTP",
+      "description": "Unencrypted HTTP request to FHIR endpoint detected. Resource type: Patient. FHIR over HTTP exposes patient data and auth tokens in cleartext.",
+      "evidence": "GET /fhir/Patient?name=Doe HTTP/1.1",
+      "src_ip": "192.168.10.90",
+      "dst_ip": "192.168.10.80",
+      "port": 8080,
+      "recommendation": "All FHIR endpoints must use HTTPS/TLS 1.2+. Disable HTTP listener on FHIR server. Enforce SMART on FHIR authorization."
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "Protocol",
+      "title": "DICOM Association without authentication",
+      "description": "DICOM Association Request detected. Standard DICOM has no built-in authentication — any node can query the SCP. Patient data may be retrievable via C-FIND/C-GET.",
+      "evidence": "192.168.10.22 initiated DICOM association to 192.168.10.42:104",
+      "src_ip": "192.168.10.22",
+      "dst_ip": "192.168.10.42",
+      "port": 104,
+      "recommendation": "Implement AE Title whitelisting on the SCP. Deploy DICOM TLS mutual authentication."
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "Protocol",
+      "title": "SNMP-managed Medical Device detected",
+      "description": "SNMP traffic observed from a medical device. SNMPv1/v2 uses community strings transmitted in cleartext.",
+      "evidence": "192.168.10.42:161 | UDP",
+      "src_ip": "192.168.10.42",
+      "dst_ip": "192.168.10.1",
+      "port": 161,
+      "recommendation": "Upgrade to SNMPv3 with authentication and encryption. Change default community strings."
+    }
+  ]
+}
