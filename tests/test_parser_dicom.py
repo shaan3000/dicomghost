@@ -4,7 +4,7 @@ Tests for the DICOM protocol parser.
 """
 
 import pytest
-from tests.conftest import packets_to_flows
+from conftest import packets_to_flows
 from medihunt.parsers.dicom import DicomParser
 from medihunt.results import Severity
 

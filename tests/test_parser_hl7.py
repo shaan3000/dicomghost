@@ -4,7 +4,7 @@ Tests for the HL7 v2 / MLLP parser.
 """
 
 import pytest
-from tests.conftest import packets_to_flows
+from conftest import packets_to_flows
 from medihunt.parsers.hl7 import HL7Parser
 from medihunt.results import Severity
 

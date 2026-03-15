@@ -4,7 +4,7 @@ Tests for the medical device fingerprinting module.
 """
 
 import pytest
-from tests.conftest import packets_to_flows
+from conftest import packets_to_flows
 from medihunt.fingerprint.devices import DeviceFingerprinter
 
 

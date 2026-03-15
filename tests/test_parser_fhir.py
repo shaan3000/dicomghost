@@ -4,7 +4,7 @@ Tests for the FHIR REST API parser.
 """
 
 import pytest
-from tests.conftest import packets_to_flows
+from conftest import packets_to_flows
 from medihunt.parsers.fhir import FHIRParser
 from medihunt.results import Severity
 

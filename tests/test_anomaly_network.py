@@ -4,7 +4,7 @@ Tests for the network anomaly detection module.
 """
 
 import pytest
-from tests.conftest import packets_to_flows
+from conftest import packets_to_flows
 from medihunt.anomaly.network import NetworkAnomalyDetector, is_public_ip
 from medihunt.results import Severity
 
