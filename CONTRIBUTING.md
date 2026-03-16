@@ -1,6 +1,6 @@
-# Contributing to MediHunt
+# Contributing to DicomGhost
 
-Thank you for your interest in contributing. MediHunt is a security research tool focused on medical device network analysis — contributions that improve detection accuracy, add new protocol support, or improve usability are very welcome.
+Thank you for your interest in contributing. DicomGhost is a security research tool focused on medical device network analysis — contributions that improve detection accuracy, add new protocol support, or improve usability are very welcome.
 
 ---
 
@@ -55,9 +55,9 @@ Good feature requests include:
 
 ## Adding a New Protocol Parser
 
-1. Create `medihunt/parsers/yourprotocol.py`
+1. Create `dicomghost/parsers/yourprotocol.py`
 2. Implement a class with `__init__(self, packets, flows)` and `analyze() -> List[Finding]`
-3. Import and register it in `medihunt/engine.py`
+3. Import and register it in `dicomghost/engine.py`
 4. Add tests in `tests/test_parser_yourprotocol.py`
 5. Document it in `docs/protocols.md`
 

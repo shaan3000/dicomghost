@@ -5,8 +5,8 @@ Tests for the FHIR REST API parser.
 
 import pytest
 from conftest import packets_to_flows
-from medihunt.parsers.fhir import FHIRParser
-from medihunt.results import Severity
+from dicomghost.parsers.fhir import FHIRParser
+from dicomghost.results import Severity
 
 
 def test_fhir_detects_http_patient_access(fhir_http_packets):

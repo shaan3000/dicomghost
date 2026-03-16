@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="medihunt",
+    name="dicomghost",
     version="0.1.0",
     description="Medical Device Network Traffic Analyzer for Security Assessments",
     author="Shantanu Shastri",

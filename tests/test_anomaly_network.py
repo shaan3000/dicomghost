@@ -5,8 +5,8 @@ Tests for the network anomaly detection module.
 
 import pytest
 from conftest import packets_to_flows
-from medihunt.anomaly.network import NetworkAnomalyDetector, is_public_ip
-from medihunt.results import Severity
+from dicomghost.anomaly.network import NetworkAnomalyDetector, is_public_ip
+from dicomghost.results import Severity
 
 
 # ── is_public_ip unit tests ───────────────────────────────────────────────────

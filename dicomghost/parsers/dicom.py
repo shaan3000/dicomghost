@@ -1,6 +1,6 @@
-"""medihunt.parsers.dicom"""
+"""dicomghost.parsers.dicom"""
 from typing import List
-from medihunt.results import Finding, Severity
+from dicomghost.results import Finding, Severity
 
 DICOM_PORTS = {104, 11112, 4242}
 PDU_ASSOCIATE_RQ = 0x01

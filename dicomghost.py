@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-MediHunt - Medical Device Network Traffic Analyzer
+DicomGhost - Medical Device Network Traffic Analyzer
 Author: Shantanu Shastri
 """
 
 import argparse
 import sys
 import os
-from medihunt.capture import start_live_capture, load_pcap
-from medihunt.engine import MediHuntEngine
-from medihunt.output.reporter import Reporter
+from dicomghost.capture import start_live_capture, load_pcap
+from dicomghost.engine import DicomGhostEngine
+from dicomghost.output.reporter import Reporter
 
 BANNER = r"""
   __  __          _ _   _   _             _   
@@ -25,7 +25,7 @@ BANNER = r"""
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        prog="medihunt",
+        prog="dicomghost",
         description="Medical device network traffic analyzer for security assessments",
     )
     source = parser.add_mutually_exclusive_group(required=True)
@@ -36,7 +36,7 @@ def parse_args():
     parser.add_argument("--out", metavar="FILE")
     parser.add_argument("--verbose", "-v", action="store_true")
     parser.add_argument("--no-banner", action="store_true")
-    parser.add_argument("--version", action="version", version="MediHunt 0.1.0")
+    parser.add_argument("--version", action="version", version="DicomGhost 0.1.0")
     return parser.parse_args()
 
 def main():
@@ -57,7 +57,7 @@ def main():
         sys.exit(1)
     print(f"[*] Packets loaded: {len(packets)}")
     print("[*] Running analysis modules...\n")
-    engine = MediHuntEngine(packets, verbose=args.verbose)
+    engine = DicomGhostEngine(packets, verbose=args.verbose)
     results = engine.run()
     reporter = Reporter(results, fmt=args.output, verbose=args.verbose)
     reporter.print_report()

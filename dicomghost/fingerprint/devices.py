@@ -1,6 +1,6 @@
-"""medihunt.fingerprint.devices"""
+"""dicomghost.fingerprint.devices"""
 from typing import List
-from medihunt.results import Device
+from dicomghost.results import Device
 
 DEVICE_SIGNATURES = [
     (frozenset({104}),       "DICOM AE (PACS/Modality)",      "High"),

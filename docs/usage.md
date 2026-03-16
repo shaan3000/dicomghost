@@ -3,8 +3,8 @@
 ## Installation
 
 ```bash
-git clone https://github.com/shantanushastri/medihunt.git
-cd medihunt
+git clone https://github.com/shantanushastri/dicomghost.git
+cd dicomghost
 pip install -r requirements.txt
 ```
 
@@ -19,28 +19,28 @@ pip install -e .
 
 ### Analyze a PCAP file
 ```bash
-python medihunt.py --pcap hospital_capture.pcap
+python dicomghost.py --pcap hospital_capture.pcap
 ```
 
 ### Live capture on a network interface
 ```bash
-sudo python medihunt.py --iface eth0 --duration 60
+sudo python dicomghost.py --iface eth0 --duration 60
 ```
 Root/sudo is required for raw packet capture.
 
 ### Export JSON report
 ```bash
-python medihunt.py --pcap capture.pcap --output json --out report.json
+python dicomghost.py --pcap capture.pcap --output json --out report.json
 ```
 
 ### Verbose mode (all findings including INFO)
 ```bash
-python medihunt.py --pcap capture.pcap --verbose
+python dicomghost.py --pcap capture.pcap --verbose
 ```
 
 ### Suppress banner (for scripting)
 ```bash
-python medihunt.py --pcap capture.pcap --no-banner
+python dicomghost.py --pcap capture.pcap --no-banner
 ```
 
 ---
@@ -55,7 +55,7 @@ Machine-readable output for integration with SIEM, ticketing, or reporting pipel
 
 ```json
 {
-  "tool": "MediHunt",
+  "tool": "DicomGhost",
   "version": "0.1.0",
   "timestamp": "2024-11-01T14:23:11",
   "summary": {
@@ -82,7 +82,7 @@ Machine-readable output for integration with SIEM, ticketing, or reporting pipel
 
 Example CI/CD usage:
 ```bash
-python medihunt.py --pcap scan.pcap --no-banner
+python dicomghost.py --pcap scan.pcap --no-banner
 if [ $? -eq 2 ]; then
     echo "CRITICAL findings — blocking pipeline"
     exit 1
@@ -98,9 +98,9 @@ fi
    sudo tcpdump -i eth0 -w hospital_traffic.pcap
    ```
 
-2. **Run MediHunt against the PCAP**
+2. **Run DicomGhost against the PCAP**
    ```bash
-   python medihunt.py --pcap hospital_traffic.pcap --output json --out findings.json
+   python dicomghost.py --pcap hospital_traffic.pcap --output json --out findings.json
    ```
 
 3. **Review device inventory** — verify what was discovered matches expected network topology

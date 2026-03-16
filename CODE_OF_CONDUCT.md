@@ -2,7 +2,7 @@
 
 ## Our Pledge
 
-MediHunt is a security research project. Everyone who participates — contributors, users, and maintainers — is expected to engage respectfully and professionally.
+DicomGhost is a security research project. Everyone who participates — contributors, users, and maintainers — is expected to engage respectfully and professionally.
 
 ## Standards
 
@@ -15,7 +15,7 @@ Acceptable behaviour:
 Unacceptable behaviour:
 - Harassment of any kind
 - Sharing real patient data or PHI in issues, PRs, or discussions
-- Using MediHunt or this community to facilitate unauthorized access to healthcare systems
+- Using DicomGhost or this community to facilitate unauthorized access to healthcare systems
 - Deliberate spread of misinformation about healthcare security
 
 ## Enforcement

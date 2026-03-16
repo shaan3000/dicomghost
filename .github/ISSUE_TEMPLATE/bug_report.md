@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Report a bug or unexpected behaviour in MediHunt
+about: Report a bug or unexpected behaviour in DicomGhost
 title: "[BUG] "
 labels: bug
 assignees: ''
@@ -11,7 +11,7 @@ A clear description of the bug.
 
 ## Command Run
 ```bash
-python medihunt.py --pcap ...
+python dicomghost.py --pcap ...
 ```
 
 ## Expected Behaviour
@@ -27,7 +27,7 @@ paste error here
 ## Environment
 - OS: [e.g. Ubuntu 22.04 / Windows 11 / macOS 14]
 - Python version: [e.g. 3.10.4]
-- MediHunt version: [e.g. 0.1.0]
+- DicomGhost version: [e.g. 0.1.0]
 - Scapy version: [e.g. 2.5.0]
 
 ## PCAP Details (if applicable)

@@ -1,6 +1,6 @@
 """
 tests/conftest.py
-Shared fixtures for MediHunt test suite.
+Shared fixtures for DicomGhost test suite.
 Builds synthetic packets using Scapy — no real patient data.
 """
 
@@ -29,7 +29,7 @@ FAKE_DICOM_ASSOCIATE_RQ = (
     b'\x00\x00\x00\x44'  # PDU length
     b'\x00\x01'          # protocol version
     b'\x00\x00'          # reserved
-    b'MEDIHUNT_SCU    '  # calling AE title (16 bytes)
+    b'DICOMGHOST_SCU    '  # calling AE title (16 bytes)
     b'PACS_SERVER     '  # called AE title (16 bytes)
     b'\x00' * 32         # reserved
 )

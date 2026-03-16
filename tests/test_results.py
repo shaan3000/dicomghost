@@ -3,7 +3,7 @@ tests/test_results.py
 Tests for the ScanResults and Finding data structures.
 """
 
-from medihunt.results import ScanResults, Finding, Severity
+from dicomghost.results import ScanResults, Finding, Severity
 
 
 def make_finding(severity):

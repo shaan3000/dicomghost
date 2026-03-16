@@ -10,7 +10,7 @@ assignees: ''
 Describe the security scenario or gap this feature would address.
 
 ## Proposed Solution
-Describe what you'd like MediHunt to detect or do.
+Describe what you'd like DicomGhost to detect or do.
 
 ## Protocol / Standard Reference
 If this involves a medical protocol, link to relevant documentation:
@@ -26,7 +26,7 @@ example packet / payload / finding output
 ```
 
 ## Alternatives Considered
-Are there existing tools that partially solve this? Why is MediHunt the right place?
+Are there existing tools that partially solve this? Why is DicomGhost the right place?
 
 ## Additional Context
 Any other context, screenshots, or references.

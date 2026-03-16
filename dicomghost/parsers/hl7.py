@@ -1,6 +1,6 @@
-"""medihunt.parsers.hl7"""
+"""dicomghost.parsers.hl7"""
 from typing import List
-from medihunt.results import Finding, Severity
+from dicomghost.results import Finding, Severity
 
 MLLP_START = b'\x0b'
 MLLP_END = b'\x1c\x0d'

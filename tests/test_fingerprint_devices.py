@@ -5,7 +5,7 @@ Tests for the medical device fingerprinting module.
 
 import pytest
 from conftest import packets_to_flows
-from medihunt.fingerprint.devices import DeviceFingerprinter
+from dicomghost.fingerprint.devices import DeviceFingerprinter
 
 
 def test_dicom_device_fingerprinted(dicom_associate_packets):

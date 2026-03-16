@@ -8,14 +8,14 @@
 
 ---
 
-## Reporting a Vulnerability in MediHunt
+## Reporting a Vulnerability in DicomGhost
 
-If you discover a security vulnerability **in MediHunt itself** (not in the medical devices it analyzes), please do not open a public GitHub issue.
+If you discover a security vulnerability **in DicomGhost itself** (not in the medical devices it analyzes), please do not open a public GitHub issue.
 
 Instead, report it privately:
 
 **Email:** security@[your-domain].com  
-**Subject line:** `[MediHunt] Security Vulnerability Report`
+**Subject line:** `[DicomGhost] Security Vulnerability Report`
 
 Please include:
 - Description of the vulnerability
@@ -36,14 +36,14 @@ Vulnerabilities in scope:
 - Logic flaws that could cause false negatives in PHI detection
 
 Out of scope:
-- Vulnerabilities in the medical devices or protocols MediHunt detects
+- Vulnerabilities in the medical devices or protocols DicomGhost detects
 - Issues in third-party tools or libraries (report those upstream)
 
 ---
 
 ## Legal
 
-MediHunt is a defensive security research tool. Responsible security research conducted in good faith is welcomed and will not result in legal action. We ask that you:
+DicomGhost is a defensive security research tool. Responsible security research conducted in good faith is welcomed and will not result in legal action. We ask that you:
 
 - Give us reasonable time to fix before public disclosure
 - Do not access, modify, or exfiltrate any real patient data during research
@@ -53,4 +53,4 @@ MediHunt is a defensive security research tool. Responsible security research co
 
 ## Ethical Use Reminder
 
-MediHunt is designed for **authorized security assessments only**. Using it against systems without written authorization may violate laws including HIPAA, the Computer Fraud and Abuse Act (CFAA), and equivalent legislation in your jurisdiction.
+DicomGhost is designed for **authorized security assessments only**. Using it against systems without written authorization may violate laws including HIPAA, the Computer Fraud and Abuse Act (CFAA), and equivalent legislation in your jurisdiction.

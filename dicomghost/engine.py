@@ -1,13 +1,13 @@
-"""medihunt.engine"""
-from medihunt.parsers.dicom import DicomParser
-from medihunt.parsers.hl7 import HL7Parser
-from medihunt.parsers.fhir import FHIRParser
-from medihunt.fingerprint.devices import DeviceFingerprinter
-from medihunt.anomaly.phi import PHIDetector
-from medihunt.anomaly.network import NetworkAnomalyDetector
-from medihunt.results import ScanResults
+"""dicomghost.engine"""
+from dicomghost.parsers.dicom import DicomParser
+from dicomghost.parsers.hl7 import HL7Parser
+from dicomghost.parsers.fhir import FHIRParser
+from dicomghost.fingerprint.devices import DeviceFingerprinter
+from dicomghost.anomaly.phi import PHIDetector
+from dicomghost.anomaly.network import NetworkAnomalyDetector
+from dicomghost.results import ScanResults
 
-class MediHuntEngine:
+class DicomGhostEngine:
     def __init__(self, packets, verbose=False):
         self.packets = packets
         self.verbose = verbose

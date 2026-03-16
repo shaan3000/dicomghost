@@ -1,6 +1,6 @@
-"""medihunt.parsers.fhir"""
+"""dicomghost.parsers.fhir"""
 from typing import List
-from medihunt.results import Finding, Severity
+from dicomghost.results import Finding, Severity
 
 FHIR_PHI_RESOURCES = ["Patient","Observation","Condition","DiagnosticReport","MedicationRequest","Encounter"]
 FHIR_HTTP_PORTS = {80, 8080, 8000, 8081, 3000}

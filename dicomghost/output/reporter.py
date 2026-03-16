@@ -1,7 +1,7 @@
-"""medihunt.output.reporter"""
+"""dicomghost.output.reporter"""
 import json
 from datetime import datetime
-from medihunt.results import ScanResults, Severity
+from dicomghost.results import ScanResults, Severity
 
 RESET = "\033[0m"
 BOLD  = "\033[1m"
@@ -46,7 +46,7 @@ class Reporter:
     def _build_text(self):
         lines = []
         lines.append(f"{BOLD}{'─'*70}{RESET}")
-        lines.append(f"{BOLD}  MediHunt Scan Report  |  {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}{RESET}")
+        lines.append(f"{BOLD}  DicomGhost Scan Report  |  {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}{RESET}")
         lines.append(f"{BOLD}{'─'*70}{RESET}\n")
         summary = self.results.summary()
         lines.append(f"{BOLD}Summary:{RESET}")
@@ -85,7 +85,7 @@ class Reporter:
 
     def _build_json(self):
         report = {
-            "tool": "MediHunt",
+            "tool": "DicomGhost",
             "version": "0.1.0",
             "timestamp": datetime.now().isoformat(),
             "summary": self.results.summary(),

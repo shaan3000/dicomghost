@@ -1,7 +1,7 @@
-"""medihunt.anomaly.network"""
+"""dicomghost.anomaly.network"""
 import ipaddress
 from typing import List
-from medihunt.results import Finding, Severity
+from dicomghost.results import Finding, Severity
 
 PRIVATE_RANGES = [
     ipaddress.IPv4Network("10.0.0.0/8"),

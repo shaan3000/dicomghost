@@ -5,8 +5,8 @@ Tests for the HL7 v2 / MLLP parser.
 
 import pytest
 from conftest import packets_to_flows
-from medihunt.parsers.hl7 import HL7Parser
-from medihunt.results import Severity
+from dicomghost.parsers.hl7 import HL7Parser
+from dicomghost.results import Severity
 
 
 def test_hl7_detects_mllp_traffic(hl7_packets):

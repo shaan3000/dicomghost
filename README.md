@@ -1,11 +1,11 @@
-# MediHunt 🏥🔍
+# DicomGhost 🏥🔍
 
 **Medical Device Network Traffic Analyzer for Security Assessments**
 
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Version](https://img.shields.io/badge/version-0.1.0-orange)
-![CI](https://github.com/shaan3000/medihunt/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/shaan3000/dicomghost/actions/workflows/ci.yml/badge.svg)
 
 > A passive CLI tool that analyzes network traffic for healthcare-specific protocol vulnerabilities, PHI leakage, and medical device anomalies. No packets sent. No active scanning.
 
@@ -13,11 +13,11 @@
 
 ---
 
-## Why MediHunt?
+## Why DicomGhost?
 
 Tools like Wireshark, Zeek, and Scapy are protocol-agnostic — they show you packets but have **zero awareness** of healthcare protocols, PHI exposure, or what kind of medical device is on the other end.
 
-MediHunt fills that gap. It understands:
+DicomGhost fills that gap. It understands:
 - **DICOM** — medical imaging protocol (C-FIND, C-STORE, Association requests)
 - **HL7 v2 / MLLP** — patient messaging (ADT, ORU, ORM, MDM)
 - **FHIR REST APIs** — modern clinical APIs over HTTP
@@ -45,8 +45,8 @@ No existing open source tool combines all of these in a single, pentest-ready CL
 **Requirements:** Python 3.8+, pip, root/sudo for live capture
 
 ```bash
-git clone https://github.com/shaan3000/medihunt.git
-cd medihunt
+git clone https://github.com/shaan3000/dicomghost.git
+cd dicomghost
 pip install -r requirements.txt
 ```
 
@@ -56,16 +56,16 @@ pip install -r requirements.txt
 
 ```bash
 # Analyze a PCAP file
-python medihunt.py --pcap hospital_network.pcap
+python dicomghost.py --pcap hospital_network.pcap
 
 # Live capture on interface for 60 seconds (requires sudo)
-sudo python medihunt.py --iface eth0 --duration 60
+sudo python dicomghost.py --iface eth0 --duration 60
 
 # Export JSON report
-python medihunt.py --pcap capture.pcap --output json --out report.json
+python dicomghost.py --pcap capture.pcap --output json --out report.json
 
 # Verbose mode — show all findings including INFO
-python medihunt.py --pcap capture.pcap --verbose
+python dicomghost.py --pcap capture.pcap --verbose
 ```
 
 ---
@@ -82,7 +82,7 @@ python medihunt.py --pcap capture.pcap --verbose
   Medical Device Network Recon Tool
 
 ──────────────────────────────────────────────────────────────────────
-  MediHunt Scan Report  |  2024-11-01 14:23:11
+  DicomGhost Scan Report  |  2024-11-01 14:23:11
 ──────────────────────────────────────────────────────────────────────
 
 Summary:
@@ -151,7 +151,7 @@ Useful for CI/CD integration or automated assessment pipelines.
 
 ```bash
 pip install pytest pytest-cov
-pytest tests/ -v --cov=medihunt
+pytest tests/ -v --cov=dicomghost
 ```
 
 ---
@@ -178,7 +178,7 @@ Specialization: Medical Device & IoT Security, Hardware Security, Penetration Te
 
 ## Legal Disclaimer
 
-MediHunt is a **passive** network analysis tool — it does not transmit any packets. It is intended exclusively for authorized penetration testing engagements, security research in controlled lab environments, and healthcare security assessments with written client authorization.
+DicomGhost is a **passive** network analysis tool — it does not transmit any packets. It is intended exclusively for authorized penetration testing engagements, security research in controlled lab environments, and healthcare security assessments with written client authorization.
 
 Use of this tool against systems without explicit written authorization may violate HIPAA, the Computer Fraud and Abuse Act (CFAA), and equivalent legislation in your jurisdiction. The author assumes no liability for misuse.
 

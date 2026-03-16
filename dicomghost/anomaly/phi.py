@@ -1,7 +1,7 @@
-"""medihunt.anomaly.phi"""
+"""dicomghost.anomaly.phi"""
 import re
 from typing import List
-from medihunt.results import Finding, Severity
+from dicomghost.results import Finding, Severity
 
 PHI_PATTERNS = [
     (re.compile(r'\b\d{3}-\d{2}-\d{4}\b'), "SSN", Severity.CRITICAL),

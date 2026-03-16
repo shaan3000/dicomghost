@@ -1,6 +1,6 @@
 # Protocol Reference
 
-Documentation for each medical protocol MediHunt analyzes.
+Documentation for each medical protocol DicomGhost analyzes.
 
 ---
 
@@ -17,7 +17,7 @@ Documentation for each medical protocol MediHunt analyzes.
 | Encryption | Optional (TLS) |
 | Authentication | None (AE Title only) |
 
-### What MediHunt detects
+### What DicomGhost detects
 - Unencrypted DICOM traffic on standard ports
 - DICOM Association Requests (PDU type 0x01)
 - C-FIND queries (patient record lookup) — **CRITICAL**
@@ -46,7 +46,7 @@ DICOM has no mandatory authentication or encryption. Any node on the network tha
 | Encryption | None in MLLP — TLS must be added separately |
 | Authentication | None built-in |
 
-### What MediHunt detects
+### What DicomGhost detects
 - MLLP framing (`0x0B` start byte) on port 2575 or any port
 - HL7 message type extraction (ADT, ORU, ORM, MDM, etc.)
 - PHI field extraction from PID segments:
@@ -88,7 +88,7 @@ HL7 v2 carries the most sensitive clinical data of any protocol. MLLP has zero s
 | Authentication | SMART on FHIR (OAuth2 + Bearer tokens) |
 | Encryption | TLS (HTTPS) required by spec — not always enforced |
 
-### What MediHunt detects
+### What DicomGhost detects
 - FHIR resource paths over HTTP (not HTTPS)
 - PHI resource types: Patient, Observation, Condition, DiagnosticReport, etc.
 - Bearer tokens in Authorization headers (cleartext)

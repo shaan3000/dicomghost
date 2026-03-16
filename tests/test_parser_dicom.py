@@ -5,8 +5,8 @@ Tests for the DICOM protocol parser.
 
 import pytest
 from conftest import packets_to_flows
-from medihunt.parsers.dicom import DicomParser
-from medihunt.results import Severity
+from dicomghost.parsers.dicom import DicomParser
+from dicomghost.results import Severity
 
 
 def test_dicom_detects_unencrypted_traffic(dicom_associate_packets):
