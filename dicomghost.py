@@ -12,13 +12,13 @@ from dicomghost.engine import DicomGhostEngine
 from dicomghost.output.reporter import Reporter
 
 BANNER = r"""
-  __  __          _ _   _   _             _   
- |  \/  | ___  __| (_) | | | |_   _ _ __ | |_ 
- | |\/| |/ _ \/ _` | | | |_| | | | | '_ \| __|
- | |  | |  __/ (_| | | |  _  | |_| | | | | |_ 
- |_|  |_|\___|\__,_|_| |_| |_|\__,_|_| |_|\__|
-                                           
-  Medical Device Network Recon Tool
+       ___                            __               __ 
+  ____/ (_)________  ____ ___  ____ _/ /_  ____  _____/ /_
+ / __  / / ___/ __ \/ __ `__ \/ __ `/ __ \/ __ \/ ___/ __/
+/ /_/ / / /__/ /_/ / / / / / / /_/ / / / / /_/ (__  ) /_  
+\__,_/_/\___/\____/_/ /_/ /_/\__, /_/ /_/\____/____/\__/  
+                            /____/                        
+  DICOM Medical Device Network Recon Tool
   Author: Shantanu Shastri
   For authorized security assessments only.
 """
